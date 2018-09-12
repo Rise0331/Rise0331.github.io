@@ -18,6 +18,9 @@
     <link rel="icon" href="/img/favicon.png"> 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <link rel="stylesheet" href="/css/diaspora.css">
+    <link rel="stylesheet" href="/highlight/styles/github.css">
+    <script src="/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 <body class="loading">
@@ -57,14 +60,74 @@
 <h4 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27. Remove Element"></a>27. Remove Element</h4><p>类型: Array, Two Pointers</p>
 <p><img src="http://op6guxky2.bkt.clouddn.com/DX-20180911@2x.png" alt=""></p>
 <p>思路: 使用j记录当前非value元素的长度，i向后遍历查找不等于value的元素，找到后，将处于i位置的元素复制到j位置，将j增加1，表示非value元素个数加1，同时也表示移动到下一位置，遍历结束得到最终的长度。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">removeElement</span><span class="params">(<span class="number">_</span> nums: <span class="keyword">inout</span> [Int], <span class="number">_</span> val: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> j = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;nums.<span class="built_in">count</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] == val &#123;</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            nums[j] = nums[i]</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> j</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="Swift">class Solution {
+    func removeElement(_ nums: inout [Int], _ val: Int) -&gt; Int {
+        var j = 0
+
+        for i in 0..&lt;nums.count {
+            if nums[i] == val {
+                continue
+            }
+
+            nums[j] = nums[i]
+            j += 1
+        }
+
+        return j
+    }
+}
+</code></pre>
 <h4 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="26. Remove Duplicates from Sorted Array"></a>26. Remove Duplicates from Sorted Array</h4><p>类型: Array, Two Pointers</p>
 <p><img src="http://op6guxky2.bkt.clouddn.com/remove-duplicate-element-in-sorted-array.png" alt=""></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">removeDuplicates</span><span class="params">(<span class="number">_</span> nums: <span class="keyword">inout</span> [Int])</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> nums.<span class="built_in">count</span> &lt;= <span class="number">1</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> nums.<span class="built_in">count</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> j = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;nums.<span class="built_in">count</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] != nums[j] &#123;</span><br><span class="line">                nums[j + <span class="number">1</span>] = nums[i]</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> j + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="Swift">class Solution {
+    func removeDuplicates(_ nums: inout [Int]) -&gt; Int {
+        if nums.count &lt;= 1 {
+            return nums.count
+        }
+
+        var j = 0
+        for i in 0..&lt;nums.count {
+            if nums[i] != nums[j] {
+                nums[j + 1] = nums[i]
+                j += 1
+            }
+        }
+
+        return j + 1
+    }
+}
+</code></pre>
 <h4 id="80-Remove-Duplicates-from-Sorted-Array-2"><a href="#80-Remove-Duplicates-from-Sorted-Array-2" class="headerlink" title="80. Remove Duplicates from Sorted Array (2)"></a>80. Remove Duplicates from Sorted Array (2)</h4><p>类型: Array, Two Pointers</p>
 <p><img src="http://op6guxky2.bkt.clouddn.com/remove-duplicate-element-from-sorted-array2.png" alt=""></p>
 <p>思路：使用一个额外的变量(代码中用duplicateCount)来记录后续元素和当前元素重复的个数，后面的元素如果和当前元素相同，则duplicateCount加1，当duplicateCount小于2(或者说等于1时)，保存这个重复的元素，超过1的话，丢弃重复的元素。后面的元素和当前元素不同的话，直接将当前保存的length加1，并将后面的元素复制到length对应的位置，将duplicateCount置0。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">removeDuplicates</span><span class="params">(<span class="number">_</span> nums: <span class="keyword">inout</span> [Int])</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> nums.<span class="built_in">count</span> &lt; <span class="number">2</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> nums.<span class="built_in">count</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> length = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> duplicateCount = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..&lt;nums.<span class="built_in">count</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] == nums[length] &#123;</span><br><span class="line">                duplicateCount += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> duplicateCount &lt; <span class="number">2</span> &#123;</span><br><span class="line">                    length += <span class="number">1</span></span><br><span class="line">                    nums[length] = nums[i]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                length += <span class="number">1</span></span><br><span class="line">                nums[length] = nums[i];</span><br><span class="line">                duplicateCount = <span class="number">0</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> length + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="Swift">class Solution {
+    func removeDuplicates(_ nums: inout [Int]) -&gt; Int {
+        if nums.count &lt; 2 {
+            return nums.count
+        }
+
+        var length = 0
+        var duplicateCount = 0
+
+        for i in 1..&lt;nums.count {
+            if nums[i] == nums[length] {
+                duplicateCount += 1
+                if duplicateCount &lt; 2 {
+                    length += 1
+                    nums[length] = nums[i]
+                }
+            } else {
+                length += 1
+                nums[length] = nums[i];
+                duplicateCount = 0
+            }
+        }
+
+        return length + 1
+    }
+}
+</code></pre>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
