@@ -465,18 +465,18 @@ $(function() {
               // comment
             case - 1 != tag.indexOf("comment"): 
                 Diaspora.loading(),
-                comment = $('#gitalk-container');
-                gitalk = new Gitalk({
-                  clientID: comment.data('ci'),
-                  clientSecret: comment.data('cs'),
-                  repo: comment.data('r'),
-                  owner: comment.data('o'),
-                  admin: comment.data('a'),
-                  id: location.pathname,
-                  distractionFreeMode: comment.data('d')
-                })
-                $(".comment").removeClass("link")
-                gitalk.render('gitalk-container')
+                // comment = $('#gitalk-container');
+                // gitalk = new Gitalk({
+                //   clientID: comment.data('ci'),
+                //   clientSecret: comment.data('cs'),
+                //   repo: comment.data('r'),
+                //   owner: comment.data('o'),
+                //   admin: comment.data('a'),
+                //   id: location.pathname,
+                //   distractionFreeMode: comment.data('d')
+                // })
+                // $(".comment").removeClass("link")
+                // gitalk.render('gitalk-container')
                 Diaspora.loaded();
                 return false;
                 break;
@@ -490,6 +490,31 @@ $(function() {
     if (comment.data('ae') == true){
         comment.click();
     }
+
+    // new Valine({
+    //     // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+    //         av: AV, 
+    //         el: '.comment', // 
+    //         notify: true,
+    //         app_id: 'Ief4v8sci9DTk4PQHps1kPEP-gzGzoHsz', // 这里填写上面得到的APP ID
+    //         app_key: 'nCcI7aL0lGvLq0mTflA4iqiq', // 这里填写上面得到的APP KEY
+    //         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!', // [v1.0.7 new]留言框占位提示文字
+    //         meta: ['nick', 'mail']
+    //     });
+
+    setTimeout(()=> {
+            new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+                av: AV, 
+                el: '.comment', // 
+                notify: true,
+                app_id: 'Ief4v8sci9DTk4PQHps1kPEP-gzGzoHsz', // 这里填写上面得到的APP ID
+                app_key: 'nCcI7aL0lGvLq0mTflA4iqiq', // 这里填写上面得到的APP KEY
+                placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!', // [v1.0.7 new]留言框占位提示文字
+                meta: ['nick', 'mail']
+            });
+        }, 3000);
+
     console.log("%c Github %c","background:#24272A; color:#ffffff","","https://github.com/Fechin/hexo-theme-diaspora");
 })
 
