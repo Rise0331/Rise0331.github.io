@@ -513,7 +513,7 @@ $(function() {
                 placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!', // [v1.0.7 new]留言框占位提示文字
                 meta: ['nick', 'mail']
             });
-        }, 3000);
+        }, 6000);
 
     console.log("%c Github %c","background:#24272A; color:#ffffff","","https://github.com/Fechin/hexo-theme-diaspora");
 })
